@@ -1,12 +1,16 @@
-const colorBtn = document.getElementById('colorBtn');
+// Simple blinking effect on the Join Now button every 2 seconds
 
-colorBtn.addEventListener('click', () => {
-  // Array of some colors
-  const colors = ['#f44336', '#2196F3', '#ffeb3b', '#9c27b0', '#00bcd4'];
+const joinBtn = document.getElementById('joinBtn');
 
-  // Pick a random color
-  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+function blinkButton() {
+  joinBtn.style.animation = 'glowPulse 1.5s ease-in-out infinite';
+}
 
-  // Set body background to the random color
-  document.body.style.backgroundColor = randomColor;
+// Start blinking effect
+blinkButton();
+
+// Optional: stop blinking on click and show an alert
+joinBtn.addEventListener('click', () => {
+  joinBtn.style.animation = 'none';
+  alert('Welcome to the Squid Game! Get ready...');
 });
