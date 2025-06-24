@@ -1,161 +1,139 @@
-/* Reset and base */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* Squid Game colors */
+:root {
+  --green: #14532d;
+  --red: #ef4444;
+  --white: #f9fafb;
+  --black: #000000;
+  --gray-dark: #1f2937;
+}
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #eee;
 }
 
 body {
-  background: #121212;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--green);
+  color: var(--white);
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-}
-
-/* HEADER */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 3rem;
-  background-color: #1f1f1f;
-  border-bottom: 2px solid #e63946;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.logo h1 {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 700;
-  font-size: 1.8rem;
-  letter-spacing: 3px;
-  color: #e63946;
-}
-
-.shape {
-  width: 25px;
-  height: 25px;
-  border: 3px solid #e63946;
-  margin-right: 0.3rem;
-  display: inline-block;
-}
-
-.circle {
-  border-radius: 50%;
-}
-
-.triangle {
-  width: 0;
-  height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-bottom: 25px solid #e63946;
-  margin: 0 0.3rem;
-}
-
-.square {
-  /* square shape is just the border */
-}
-
-/* Navigation */
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-}
-
-nav a {
-  text-decoration: none;
-  color: #eee;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 0.3rem 0.6rem;
-  border-radius: 4px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-nav a:hover,
-nav a:focus {
-  background-color: #e63946;
-  color: #fff;
-  outline: none;
-}
-
-/* HERO SECTION */
-.hero {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
   justify-content: center;
   align-items: center;
-  padding: 4rem 2rem;
-  text-align: center;
-  background: linear-gradient(135deg, #1f1f1f, #0d0d0d);
-}
-
-.hero h2 {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 700;
-  font-size: 3rem;
-  color: #e63946;
-  margin-bottom: 1rem;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  text-shadow: 0 0 10px #e63946aa;
-}
-
-.hero p {
-  font-size: 1.25rem;
-  color: #bbb;
-  margin-bottom: 2rem;
-  max-width: 500px;
-}
-
-/* BUTTON */
-.btn-primary {
-  background-color: #06d6a0;
-  border: none;
-  padding: 1rem 2.5rem;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #121212;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 6px 15px rgba(6, 214, 160, 0.4);
   user-select: none;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  position: relative;
+}
+
+h1::after {
+  content: '● ▲ ■';
+  position: absolute;
+  right: -140px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  color: var(--red);
+  opacity: 0.5;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+p.subtitle {
+  font-weight: 400;
+  font-size: 1.25rem;
+  margin: 0 0 2rem 0;
+  color: var(--white);
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+button {
+  background: var(--red);
+  border: none;
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+  border-radius: 40px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 6px 12px rgb(239 68 68 / 0.5);
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
-.btn-primary:hover,
-.btn-primary:focus {
-  background-color: #05c388;
-  outline: none;
-  box-shadow: 0 6px 20px rgba(5, 195, 136, 0.7);
+button:hover {
+  background: var(--white);
+  color: var(--red);
+  box-shadow: 0 6px 20px rgb(239 68 68 / 0.8);
 }
 
-/* Glow animation for blinking */
-@keyframes glowPulse {
-  0%, 100% {
-    box-shadow: 0 0 10px #06d6a0, 0 0 20px #06d6a0, 0 0 30px #06d6a0;
+/* Animate shapes container */
+#shapes-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 0;
+}
+
+.shape {
+  position: absolute;
+  opacity: 0.7;
+  animation: float 8s linear infinite;
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--red);
+}
+
+.triangle {
+  width: 0; 
+  height: 0; 
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid var(--white);
+}
+
+.square {
+  width: 50px;
+  height: 50px;
+  background-color: var(--white);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(110vh) translateX(0) rotate(0deg);
+    opacity: 0.7;
   }
   50% {
-    box-shadow: 0 0 20px #05c388, 0 0 40px #05c388, 0 0 60px #05c388;
+    opacity: 1;
   }
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 1.5rem;
-  background-color: #1f1f1f;
-  font-size: 0.9rem;
-  color: #555;
+  100% {
+    transform: translateY(-110vh) translateX(100px) rotate(360deg);
+    opacity: 0;
+  }
 }
